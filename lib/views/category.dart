@@ -27,13 +27,13 @@ class CategoryView extends StatelessWidget {
                       tabs: [
                         Tab(
                           child: Text(
-                            "Men",
+                            "Women",
                             style: TextStyle(color: defaultTextColor),
                           ),
                         ),
                         Tab(
                           child: Text(
-                            "Women",
+                            "Men",
                             style: TextStyle(color: defaultTextColor),
                           ),
                         ),
@@ -146,7 +146,7 @@ class _LeftCategoriesState extends State<LeftCategories> {
                               selected: selected[menCategories.indexOf(e)],
                               onTap: () {
                                 setState(() {
-                                  select(womenCategories.indexOf(e),
+                                  select(menCategories.indexOf(e),
                                       widget.categoryType);
                                 });
                               },
@@ -170,7 +170,7 @@ class LeftItem extends StatefulWidget {
       : super(key: key);
 
   final String itemName;
-  final Function onTap;
+  final VoidCallback onTap;
   final bool selected;
 
   @override
@@ -181,7 +181,9 @@ class _LeftItemState extends State<LeftItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap(),
+      onTap: () {
+        widget.onTap();
+      },
       child: Container(
         color: !widget.selected ? Colors.transparent : Colors.white,
         child: Stack(children: [
